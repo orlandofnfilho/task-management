@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task Management</title>
+    <title>Gerenciador de Tarefas</title>
   </head>
   <body>
-    <h1>My Task Management</h1>
-    <a href="{% url 'task-create' %}">Add Task</a>
+    {% if request.user.is_authenticated %}
+
+    <p>{{ request.user }}</p>
+    <a href="{% url 'logout' %}">Sair</a>
+    {% else %}
+    <a href="{% url 'login' %}">Entrar</a>
+    {% endif %}
+    <hr />
+    <h1>Meu Gerenciador de Tarefas {{color}}</h1>
+    <a href="{% url 'task-create' %}">Adicionar Tarefa</a>
     <table>
       <tr>
         <th>Item</th>
-        <th> </th>
+        <th></th>
+        <th></th>
       </tr>
       {% for task in task_list %}
       <tr>
         <td>{{task.title}}</td>
-        <td><a href="{% url 'task' task.id %}">View</a></td>
+        <td><a href="{% url 'task' task.id %}">Exibir</a></td>
+        <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Deletar</a></td>
       </tr>
       {% empty %}
-        <h3>No items in list</h3>
+      <h3>Sem Tarefas na Lista</h3>
       {% endfor %}
     </table>
   </body>

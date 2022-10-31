@@ -7,11 +7,11 @@
     <title>Gerenciador de Tarefas</title>
 </head>
 <body>
-    <h3>Criar Nova Tarefa</h3>
+    <a href="{% url 'tasks' %}">Voltar</a>
     <form action="" method="post">
-        {%csrf_token%}
-        {{ form.as_p }}
-        <input type="submit" value="Salvar">
+        {% csrf_token %}
+        <p>Tem certeza que deseja deleta essa tafera? "{{task}}"</p>
+        <input type="submit" value="Deletar">
     </form>
 </body>
 </html>

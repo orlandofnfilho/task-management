@@ -37,7 +37,6 @@ class RegisterPage(FormView):
         return super(RegisterPage, self).form_valid(form)
 
 
-
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name: 'task_list'
@@ -61,7 +60,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('tasks')
 
-    def form_invalid(self, form):
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
 

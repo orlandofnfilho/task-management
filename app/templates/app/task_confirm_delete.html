@@ -7,11 +7,16 @@
     <title>Gerenciador de Tarefas</title>
 </head>
 <body>
+    {% extends 'app/main.html'%}
+    {% block content %}
+
     <a href="{% url 'tasks' %}">Voltar</a>
     <form action="" method="post">
         {% csrf_token %}
         <p>Tem certeza que deseja deleta essa tafera? "{{task}}"</p>
         <input type="submit" value="Deletar">
     </form>
+
+    {% endblock content %}
 </body>
 </html>

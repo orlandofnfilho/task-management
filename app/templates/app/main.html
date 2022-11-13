@@ -34,12 +34,21 @@
       color: #4b5156;
     }
 
+    a {
+      font-weight: 600;
+    }
+
     .container {
       max-width: 550px;
       margin: auto;
       background-color: #fff;
       -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
       box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+    }
+
+    input {
+      outline: none;
+      border: none;
     }
 
     .header-bar {
@@ -50,6 +59,7 @@
       border-radius: 5px 5px 0 0;
       background: linear-gradient(90deg, #647dee 0%, #7f53ac 43%, #7f53ac 100%);
     }
+
     .header-bar a {
       color: rgb(247, 247, 247);
       text-decoration: none;
@@ -59,6 +69,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 10px;
       background-color: #fff;
       border-top: 1px solid #dfe4ea;
       overflow: hidden;
@@ -76,13 +87,17 @@
     }
 
     .task-complete-icon {
+      display: inline-block;
       height: 20px;
       width: 20px;
+      margin-right: 5px;
       background-color: rgb(105, 192, 105);
       border-radius: 50%;
     }
 
     .task-incomplete-icon {
+      display: inline-block;
+      margin-right: 5px;
       height: 20px;
       width: 20px;
       background-color: rgb(218, 218, 218);
@@ -97,8 +112,66 @@
       line-height: 0;
       padding: 20px 0px;
     }
+
+    #add-link {
+      color: #647dee;
+      text-decoration: none;
+      font-size: 42px;
+      text-shadow: 1px 1px #7f53ac;
+    }
+
+    #search-add-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 320px) {
+      #search-add-wrapper {
+        padding: 10px;
+      }
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea {
+      border: 1px solid #757575;
+      border-radius: 5px;
+      padding: 10px;
+      width: 90%;
+    }
+
+    label {
+      padding-top: 10px !important;
+      display: block;
+    }
+
+    ::placeholder {
+      font-weight: 300;
+      opacity: 0.5;
+    }
+
+    .button {
+      border: 1px solid #757575;
+      background-color: #fff;
+      color: #647dee;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
   </style>
   <body>
-    <div class="container">{% block content %} {% endblock content %}</div>
+    <div class="container">
+      {% block content %} 
+
+      {% endblock content %}
+    </div>
   </body>
 </html>
